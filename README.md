@@ -28,11 +28,17 @@ There are 3 main scripts that run the simulation. Cars move in the X axis (accro
 - Variables
   * `respawnTimeL` and `respawnTimeR`: Time in seconds between each car spawn. 1 car will spawn during the time specified here, so specifying 0.2 would spawn 5 cars in 1 second. different for each direction.
   * `topSpeedMaxR, topSpeedMinR, TopspeedMaxL, topSpeedMinL`: Velocity in MPH that the cars will attempt to travel between. this sets the `topSpeed` variable for carMovement.
+  * `validLanesL` and `validLanesR`: valid lanes for travel.
+  
 - Spawn Cars (`carTimingL()` and `carTimingR()`)
-  * spawn cars at a set interval based on the adjustable
+  * spawn cars at a set interval based on the adjustable `respawnTimeL` and `respawnTimeR`
   * call `setSprite()` to randomly choose the color of a car
-  * call `setLane()` to randomly assign a lane.
-    - this depends on `validLanesL` and validLanesR`
-  * assigns velocity and topSpeed
-  
-  
+  * call `setLane()` to randomly assign a lanes. this depends on `validLanesL` and `validLanesR`
+  * assigns `velocity` and `topSpeed` using `rand()` function
+- `SetSprite(GameObject)`: randomly set the color of the car
+- `SetLane(int)`: set lane of a car based on integer given. 0-3 goes bottom to top.
+- `Save`: Export data to CSV. Includes average speed, total cars and a calculated throughput for each side.
+
+## Use
+### Lane Assignment
+Lane assignment is done based on a 0-3 integer where 3 is the top lane of the visual and 0 is the bottom lane.
